@@ -1,4 +1,4 @@
-window.onload = function() {
+function contentPlay() {
 
 	/*内容切换*/
 	for (var i = 2; i >= 0; i--) {
@@ -10,10 +10,17 @@ window.onload = function() {
 			};
 			event.currentTarget.classList.add("up-nav-active");
 			$("."+contentName)[0].style.display = "block";
+			contentAuto();
+
 		}
 	};
 
 	/*内容轮播*/
+	contentAuto();
+}
+
+/*内容轮播*/
+function contentAuto() {
 	var blockWidth = 214;
 	var nodeLength = [];
 	var totleWidth = [];
@@ -48,5 +55,4 @@ window.onload = function() {
 		left = -count*blockWidth;
 		$(".content-up-block")[num].style.left = left+'px';
 	} 
-
 }

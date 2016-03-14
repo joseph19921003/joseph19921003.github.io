@@ -2,6 +2,10 @@
  * Created by SunshineLXH on 2016/3/13.
  */
 window.onload = function(){
+
+    //内容部分中的js事件
+    contentPlay();
+
     //获取元素
     var tpBgimg = $(".tp-bgimg", $("#tp-slideshow")),
         tpText  = $(".tp-text"),

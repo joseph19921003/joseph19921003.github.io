@@ -431,7 +431,7 @@ html,body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	border: none;
+	border: 0 solid #fff;
 }
 .content-middle:hover .middle-border {
 	left: 9px;
@@ -552,6 +552,7 @@ html,body {
 	height: 227px;
 	background-color: #d0e9ed;
 	text-align: center;
+	margin-bottom: 30px;
 }
 .content-email h2 {
 	padding: 30px 0 12px 0;
@@ -733,7 +734,7 @@ a {
 	float: left;
 	list-style: none;
 }
-.fa {
+.fa-icon {
 	height: 2em;
 	font-size: 3em;
 	overflow: hidden;
@@ -742,7 +743,7 @@ a {
 	text-decoration: none;
 	width: 2em;
 }
-.fa:before, .fa:after {
+.fa-icon:before, .fa-icon:after {
 	left: 0;
 	position: absolute;
 	text-align: center;
@@ -751,24 +752,24 @@ a {
 	top: 50%;
 	width: 100%;
 }
-.fa:before {
+.fa-icon:before {
 	color: white;
 	-webkit-transform: translate3D(0, -50%, 0);
 	-ms-transform: translate3D(0, -50%, 0);
 	transform: translate3D(0, -50%, 0);
 	z-index: 2;
 }
-.fa:after {
+.fa-icon:after {
 	padding-bottom: 25%;
 	padding-top: 300%;
 	top: 0;
 }
-.fa:hover:after {
+.fa-icon:hover:after {
 	-webkit-transform: translate3D(0, -73%, 0);
 	-ms-transform: translate3D(0, -73%, 0);
 	transform: translate3D(0, -73%, 0);
 }
-.fa:hover:before {
+.fa-icon:hover:before {
 	-webkit-transform: translate3D(0, -250%, 0);
 	    -ms-transform: translate3D(0, -250%, 0);
 	        transform: translate3D(0, -250%, 0);
