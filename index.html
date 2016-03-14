@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="http://7xrnph.com1.z0.glb.clouddn.com/favicon.ico" type="image/x-icon">
+	<title>hdu-fe</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="vertical_content">
+			<h1 class="academe">百度前端技术学院</h1>
+			<h2 class="team">HDU-FE团队</h2>
+			<div class="teamer_wrapper"></div>
+		</div>
+		<span class="btn" onclick="location.href = 'html/main.html';">点击进入</span>
+	</div>
+	<script type="text/javascript">
+		window.onload = function() {
+
+			var teamer_wrapper = document.getElementsByClassName("teamer_wrapper")[0],
+				wrap = document.getElementsByClassName("wrap")[0],
+				fragment = document.createElement("div"),
+				iconArr = ["http://7xrnph.com1.z0.glb.clouddn.com/zyw.jpg", 
+							"http://7xrnph.com1.z0.glb.clouddn.com/wsn.jpg", 
+							  "http://7xrnph.com1.z0.glb.clouddn.com/lxh.jpg", 
+							  	"http://7xrnph.com1.z0.glb.clouddn.com/qyy.jpg"],
+				teamer = null;
+
+			wrap.style.opacity = "1";
+
+			for(var i = 0; i < iconArr.length; i++) {
+				teamer = document.createElement("a");
+				teamer.className = "teamer";
+				teamer.href = "javascript: void 0;";
+				teamer.innerHTML = "<img class='default_ico' src='http://7xrnph.com1.z0.glb.clouddn.com/default.jpg' />"+
+									"<img class='teamer_ico' src='"+iconArr[i]+"' />";
+				fragment.appendChild(teamer);
+			}
+			var i = 0,
+				all_teamer = fragment.getElementsByTagName("a");
+			var timer = setInterval(function() {
+				if(i > all_teamer.length) {
+					clearInterval(timer);
+				}
+				teamer_wrapper.appendChild(all_teamer[0]);
+				i++;
+			}, 400);
+			fragment = null;
+		};
+	</script>
+</body>
+</html>

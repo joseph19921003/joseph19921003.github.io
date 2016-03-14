@@ -1,0 +1,127 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-size: 12px;
+	color: #FFF;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;
+}
+.wrap {
+	width: 100%;
+	height: 100%;
+	background: url(http://7xrnph.com1.z0.glb.clouddn.com/bg.jpg) no-repeat 0 0;
+	background-size: cover;
+	opacity: .6;	
+	transition: opacity 0.6s;
+	display: table;
+}
+.vertical_content {
+	display: table-cell;
+	vertical-align: middle;
+}
+.academe {
+}
+.team {
+
+}
+.teamer_wrapper {
+	text-align: center;
+	margin-top: 25px;
+}
+.teamer {
+	text-decoration: none;
+	display: inline-block;
+	height: 60px;
+	width: 60px;
+	border: 2px solid #FFF;
+	border-radius: 32px;
+	margin: 0 5px;
+	position: relative;
+}
+.teamer img {
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	border-radius: 30px;
+	left: 0;
+	top: 0;
+}
+.default_ico{
+    -webkit-backface-visibility: hidden;
+    box-shadow:0px 0px 0px black;
+    -webkit-transform: rotate3d(0, 1, 0, 180deg); 
+    -webkit-transition:-webkit-transform 225ms ease;
+}
+
+.teamer_ico{
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: rotate3d(0, 1, 0, 0deg); 
+    -webkit-transition:-webkit-transform 225ms ease;
+}
+
+.teamer:hover .default_ico{
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);     
+    -webkit-transition:-webkit-transform 225ms ease;
+}
+
+.teamer:hover .teamer_ico{
+    -webkit-transform: rotate3d(0, 1, 0, 180deg);   
+    -webkit-transition:-webkit-transform 225ms ease;
+}
+h1,h2 {
+	font-size: 4rem;
+	text-align: center;
+	margin-top: 25px;
+	position: relative;
+	animation: auto 0.4s ease-in;
+	/*animation-delay: 0.4s;*/
+}
+@keyframes auto {
+	0% {
+		opacity: 0;
+        transform: translateY(-30px);
+	}
+	100% {
+		opacity: 1;
+        transform: translateY(0);
+	}
+}
+h2 {
+	font-size: 2rem;
+}
+.btn {
+	position: absolute;
+	height: 50px;
+	width: 120px;
+	line-height: 50px;
+	text-align: center;
+	left: 50%;
+	margin-left: -60px;
+	bottom: 80px;
+	box-shadow: 0 0 20px #D4A5BB;
+	animation: glow 4s;
+	animation-iteration-count: infinite;
+	color: #FFF;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 10px;
+}
+@keyframes glow {
+	0% {
+		box-shadow: 0 0 20px #D4A5BB;
+		border-opacity: 0.5;
+	}
+	50% {
+		box-shadow: 0 0 0 #D4A5BB;
+		border-opacity: 1;
+	}
+	100% {
+		box-shadow: 0 0 20px #D4A5BB;
+		border-opacity: 1;
+	}
+}
+.btn:hover {
+	transform: translate(2px, 2px);
+	transition: transform 0.4s;
+}
