@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_1_8_lxh</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+        .grid-container {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .grid-container:before,
+        .grid-container:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        [class*='col-'] {
+            float: left;
+            min-height: 1px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        [class*='col-'] > p {
+            background: #eee;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #999;
+            height: 48px;
+        }
+
+        @media only screen and (min-width: 769px) {
+            .col-1 { width: 8.33%; }
+            .col-2 { width: 16.66%; }
+            .col-3 { width: 25%; }
+            .col-4 { width: 33.33%; }
+            .col-6 { width: 50%; }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .col-sm-2 { width: 16.66%; }
+            .col-sm-3 { width: 25%; }
+            .col-sm-6 { width: 50%; }
+            .col-sm-8 { width: 66.66%; }
+            .col-sm-12 { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="grid-container">
+    <div class="col-4 col-sm-6"><p></p></div>
+    <div class="col-4 col-sm-6"><p></p></div>
+    <div class="col-4 col-sm-12"><p></p></div>
+    <div class="col-3 col-sm-3"><p></p></div>
+    <div class="col-6 col-sm-6"><p></p></div>
+    <div class="col-3 col-sm-3"><p></p></div>
+    <div class="col-1 col-sm-2"><p></p></div>
+    <div class="col-1 col-sm-2"><p></p></div>
+    <div class="col-2 col-sm-8"><p></p></div>
+    <div class="col-2 col-sm-3"><p></p></div>
+    <div class="col-6 col-sm-3"><p></p></div>
+</div>
+</body>
+</html>
