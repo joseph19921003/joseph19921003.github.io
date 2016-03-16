@@ -28,21 +28,19 @@
             overflow: hidden;
             border: 1px solid #999;
             background: #eee;
+            zoom: 1;
         }
 
         #left, #center, #right {
             padding-bottom: 3276px;
             margin-bottom: -3276px;
-            zoom: 1;
         }
 
-        #left:before, #left:after,
-        #center:before, #center:after,
-        #right:before, #right:after {
+        #main:before, #main:after {
             content: "";
             display: table;
         }
-        #left:after, #center:after, #right:after {
+        #main:after {
             clear: both;
         }
 
@@ -89,6 +87,14 @@
         .logo {
             width: 80px;
             height: 80px;
+        }
+        #right img:nth-child(2) {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #right img:nth-child(3) {
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
