@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>task_4</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html, body, .wrap {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+		}
+		.wrap:before {
+			content: " ";
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+		}
+		.content {
+			width: 400px;
+			min-width: 400px;
+			height: 200px;
+			background-color: #CCC;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+			display: inline-block;
+			vertical-align: middle
+		}
+		.round {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			border-radius: 50px;
+			background-color: #FC0;
+		}
+		.top_left_round {
+			left: -50px;
+			top: -50px;
+		}
+		.bottom_right_round {
+			right: -50px;
+			bottom: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<span class="round top_left_round"></span>
+			<span class="round bottom_right_round"></span>
+		</div>
+	</div>
+</body>
+</html>
