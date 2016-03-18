@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_1_3</title>
+    <style>
+        html, body, div,  p, img {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            vertical-align: top;
+        }
+
+        #wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        #main {
+            width: calc(100% - 82px);
+            width: -webkit-calc(100% - 82px);
+            width: -moz-calc(100% - 82px);
+            min-width: 500px;
+            margin: 20px;
+            padding: 20px;
+            overflow: hidden;
+            border: 1px solid #999;
+            background: #eee;
+        }
+
+        #left, #center, #right {
+            padding-bottom: 3276px;
+            margin-bottom: -3276px;
+            zoom: 1;
+        }
+
+        #left:before, #left:after,
+        #center:before, #center:after,
+        #right:before, #right:after {
+            content: "";
+            display: table;
+        }
+        #left:after, #center:after, #right:after {
+            clear: both;
+        }
+
+        .content-wrap {
+            display: inline-block;
+            padding: 20px;
+            background: #fff;
+        }
+
+        #left img {
+            background: #84DDA7;
+        }
+
+        #left {
+            float: left;
+            width: 200px;
+        }
+
+        #left p {
+            float: right;
+            width: 78px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #center {
+            float: left;
+            margin-left: 20px;
+            margin-right: 20px;
+            width: -moz-calc(100% - 360px);
+            width: -webkit-calc(100% - 360px);
+            width: calc(100% - 360px);
+        }
+
+        #right {
+            float: left;
+        }
+
+        #right .content {
+            width: 80px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="left">
+            <div class="content-wrap">
+                <div class="content">
+                    <img class="logo" src="http://7xrnph.com1.z0.glb.clouddn.com/hdu-fe.png" alt="">
+                    <p>hdu-fe</p>
+                </div>
+            </div>
+        </div>
+        <div id="center">
+            <div class="content-wrap">
+                <div class="content">
+                    <p>团队介绍：</p>
+                    </br>
+                    <p>相逢即是有缘，喜欢前端，喜欢新事物，喜欢分享是我们共同的特点，虽然我们在不同的地方不同的学校，但IFE给了我们机会相聚于此，让我们互相鼓励互相学习，共同走向远方。</p>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="content-wrap">
+                <div class="content">
+                    <img class="logo" src="http://7xrnph.com1.z0.glb.clouddn.com/qyy.jpg" alt="">
+                    <img class="logo" src="http://7xrnph.com1.z0.glb.clouddn.com/zyw.jpg" alt="">
+                    <img class="logo" src="http://7xrnph.com1.z0.glb.clouddn.com/wsn.jpg" alt="">
+                    <img class="logo" src="http://7xrnph.com1.z0.glb.clouddn.com/lxh.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

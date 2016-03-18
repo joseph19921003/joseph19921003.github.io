@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>移动Web页面布局</title>
+	<link rel="stylesheet" type="text/css" href="task_1_11_zyw.css" />
+	<link rel="stylesheet" href="../../../css/font-awesome/css/font-awesome.css">
+</head>
+<body>
+	<script type="text/javascript">
+		var _winWidth=document.body.clientWidth || document.documentElement.clientWidth,_style=document.getElementsByTagName("html")[0].style;
+		    _winWidth >= 640 ? _style.fontSize = "20px" : _style.fontSize = _winWidth/32 + "px";
+	</script>
+    <div class="main">
+    	<div class="title-content">
+    		<div class="toback"><i class="fa fa-angle-left"></i>返回</div>
+    		<div class="title">这是标题</div>
+    	</div>
+    	<ul class="navul clearfix">
+    		<li class="navli">导航</li>
+    		<li class="navli nav-active">导航</li>
+    		<li class="navli">导航</li>
+    		<li class="navli">导航</li>
+    		<li class="navli">导航</li>
+    	</ul>
+    	<div class="banner"><img src="../../../images/task11_banner.jpg" /></div>
+    </div>
+</body>
+</html>
