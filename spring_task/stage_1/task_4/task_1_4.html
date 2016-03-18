@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_1_4</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -200px;
+            width: 400px;
+            height: 200px;
+            background: #ccc;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+        .circle {
+            position: absolute;
+            background: #fc0;
+            width: 50px;
+            height: 50px;
+        }
+        .tlcir {
+            left: 0;
+            top: 0;
+            border-bottom-right-radius: 50px;
+            -webkit-border-bottom-right-radius: 50px;
+            -moz-border-radius-bottomright: 50px;
+        }
+        .brcir {
+            right: 0;
+            bottom: 0;
+            border-top-left-radius: 50px;
+            -webkit-border-top-left-radius: 50px;
+            -moz-border-radius-topleft: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="circle tlcir"></div>
+    <div class="main"></div>
+    <div class="circle brcir"></div>
+</div>
+</body>
+</html>
