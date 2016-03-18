@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_1_10_lxh</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            paadding: 0;
+        }
+        #box {
+            display: -webkit-flex;
+            display:         flex;
+            -webkit-flex-direction: row;
+                    flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .content {
+            width: 108px;
+            min-width: 108px;
+            max-width: 108px;
+            padding: 20px;
+            border: 1px solid #f00;
+            margin-bottom: 20px;
+        }
+        .first {
+            height: 78px;
+        }
+        .second {
+            height: 58px;
+        }
+        .third {
+            height: 0;
+            padding: 19px 20px;
+        }
+        .fourth {
+            border: 1px solid #00f;
+            height: 158px;
+        }
+
+        @media screen and (max-width:640px) {
+            #box {
+                flex-wrap: wrap;
+            }
+            .content {
+                align-self: flex-start;
+                order: 1;
+            }
+            .fourth {
+                order: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="content first"></div>
+        <div class="content second"></div>
+        <div class="content third"></div>
+        <div class="content fourth"></div>
+    </div>
+</body>
+</html>
