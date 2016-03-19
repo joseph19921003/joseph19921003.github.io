@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_1_10</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.flex_container {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			padding: 0 20px;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		.flex_item {
+			margin-top: 20px;
+			width: 150px;
+			border: 1px solid #F00;
+			box-sizing: border-box;
+		}
+		.flex_container .flex_item:nth-child(1) {
+			height: 120px;
+		}
+		.flex_container .flex_item:nth-child(2) {
+			height: 100px;
+		}
+		.flex_container .flex_item:nth-child(3) {
+			height: 40px;
+		}
+		.flex_container .flex_item:nth-child(4) {
+			height: 200px;
+			border-color: #00F;
+		}
+		@media (max-width: 640px) {
+			.flex_container {
+				/*justify-content: space-around;*/
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				-webkit-flex-flow: row wrap;
+				flex-flow: row wrap;
+			}
+			.flex_container .flex_item:nth-child(4) {
+				-webkit-order: -1;
+				order: -1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="flex_container">
+		<div class="flex_item"></div>
+		<div class="flex_item"></div>
+		<div class="flex_item"></div>
+		<div class="flex_item"></div>
+	</div>
+</body>
+</html>
