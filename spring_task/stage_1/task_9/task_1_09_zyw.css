@@ -20,19 +20,162 @@
 .main {
 	width: 1280px;
 	margin: 0 auto;
+	font-family: 黑体;
 }
+
+/*头部*/
 .header {
 	width: 100%:;
 	height: 56px;
 	background-color: #37a9e5;
 }
+.logo {
+	width: 36px;
+	height: 36px;
+	padding: 10px 0 0 50px;
+}
+.header-right {
+	float: right;
+	width: 468px;
+	height: 28px;
+	margin-top: 14px;
+}
+.search {
+	position: relative;
+	width: 312px;
+	height: 28px;
+	border-radius: 14px;
+	background-color: #fff;
+	overflow: hidden;
+	float: left;
+}
+.ser-img {
+	position: absolute;
+	left: 17px;
+	top: 5px;
+}
+.ser-img i {
+	font-size: 20px;
+	color: #e3e3e3;
+}
+.ser-input {
+	width: 255px;
+	height: 28px;
+	line-height: 28px;
+	margin-left: 48px;
+}
+.ser-input input {
+	width: 255px;
+	height: 28px;
+	line-height: 28px;
+	border: none;
+	background-color: #fff;
+	outline: none;
+}
+.login {
+	float: left;
+	margin-left: 20px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 28px;
+	margin-top: 3px;
+	cursor: pointer;
+}
+.login i {
+	font-size: 17px;
+
+}
+
 .content {}
+
+/*左侧*/
 .content-left {
 	float: left;
 	width: 260px;
 	height: 1210px;
 	background-color: #151c39;
 }
+.user-content {
+	width: 170px;
+	height: 132px;
+	margin: 0 auto;
+	padding-top: 18px;
+}
+.avatar-area {
+	height: 58px;
+	line-height: 58px;
+}
+.avatar-img {
+	width: 56px;
+	float: left;
+	height: 56px;
+	border: 1px solid #b8bbbd;
+	border-radius: 28px;
+	overflow: hidden;
+}
+.avatar-img img {
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+	background-color: #b8bbbd;
+	overflow: hidden;
+	margin: 4px;
+	display: inline-block;
+}
+.nickname {
+	margin-left: 68px;
+	font-size: 16px;
+	color: #ececec;
+}
+.user-count {
+	margin-top: 21px;
+	font-size: 12px;
+	color: #6e8195;
+}
+.count-block {
+	width: 72px;
+	line-height: 16px;
+	float: left;
+	text-align: center;
+}
+.count-block:nth-child(1) {
+	border-right: 1px solid #333847;
+} 
+/*导航*/
+.menu-content {
+	color: #6d85b1;
+	font-size: 12px;
+}
+.menu-content i {
+	margin-right: 10px;
+}
+.nav-active {
+	background-color: #222b52;
+}
+[class*="navli-0"] {
+	cursor: pointer;
+	color: #6d85b1;
+}
+[class*="navli-0"]:hover {
+	color: #ededed;
+	background-color: #222b52;
+}
+.navli-01 {
+	line-height: 42px;
+	padding-left: 40px;
+}
+.navli-02 {
+	line-height: 28px;
+	padding-left: 20px;
+}
+.navli-03 {
+	line-height: 28px;
+	padding-left: 35px;
+}
+.navli-active {
+	color: #ededed;
+}
+
 .content-right {
 	height: 1210px;
 	margin-left: 260px;
