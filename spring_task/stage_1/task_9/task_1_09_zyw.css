@@ -20,6 +20,7 @@
 .main {
 	width: 1280px;
 	margin: 0 auto;
+	font-family: 黑体;
 }
 
 /*头部*/
@@ -119,15 +120,16 @@
 	background-color: #b8bbbd;
 	overflow: hidden;
 	margin: 4px;
+	display: inline-block;
 }
 .nickname {
 	margin-left: 68px;
-	font-size: 14px;
+	font-size: 16px;
 	color: #ececec;
 }
 .user-count {
 	margin-top: 21px;
-	font-size: 14px;
+	font-size: 12px;
 	color: #6e8195;
 }
 .count-block {
@@ -139,6 +141,40 @@
 .count-block:nth-child(1) {
 	border-right: 1px solid #333847;
 } 
+/*导航*/
+.menu-content {
+	color: #6d85b1;
+	font-size: 12px;
+}
+.menu-content i {
+	margin-right: 10px;
+}
+.nav-active {
+	background-color: #222b52;
+}
+[class*="navli-0"] {
+	cursor: pointer;
+	color: #6d85b1;
+}
+[class*="navli-0"]:hover {
+	color: #ededed;
+	background-color: #222b52;
+}
+.navli-01 {
+	line-height: 42px;
+	padding-left: 40px;
+}
+.navli-02 {
+	line-height: 28px;
+	padding-left: 20px;
+}
+.navli-03 {
+	line-height: 28px;
+	padding-left: 35px;
+}
+.navli-active {
+	color: #ededed;
+}
 
 .content-right {
 	height: 1210px;
