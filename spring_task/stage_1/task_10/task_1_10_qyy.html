@@ -13,12 +13,14 @@
 			display: flex;
 			-webkit-justify-content: space-between;
 			justify-content: space-between;
-			padding: 0 20px;
+			padding: 20px;
 			-webkit-align-items: center;
 			align-items: center;
+			-webkit-flex-flow: row wrap;
+			flex-flow: row wrap;
 		}
 		.flex_item {
-			margin-top: 20px;
+			margin-bottom: 20px;
 			width: 150px;
 			border: 1px solid #F00;
 			box-sizing: border-box;
@@ -38,11 +40,8 @@
 		}
 		@media (max-width: 640px) {
 			.flex_container {
-				/*justify-content: space-around;*/
 				-webkit-align-items: flex-start;
 				align-items: flex-start;
-				-webkit-flex-flow: row wrap;
-				flex-flow: row wrap;
 			}
 			.flex_container .flex_item:nth-child(4) {
 				-webkit-order: -1;
