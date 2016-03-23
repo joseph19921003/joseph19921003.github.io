@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 16</title>
+    <style type="text/css">
+      *{margin:0; padding: 0; }
+      #error {color: red;margin: 10px 130px;}
+      #add-btn {margin: 10px 130px;}
+      label {margin: 10px;display: inline-block;}
+      label span{width: 120px;text-align: right;display: inline-block;}
+      th,td{ min-width: 100px; text-align: center;}
+    </style>
+  </head>
+<body>
+
+  <div>
+    <label><span>城市名称：</span><input id="aqi-city-input" type="text"></label><br>
+    <label><span>空气质量指数：</span><input id="aqi-value-input" type="text"></label><br>
+    <button id="add-btn">确认添加</button>
+    <div id="error"></div>
+  </div>
+  <table id="aqi-table"> 
+    <tr>
+      <th>城市</th><th>空气质量</th><th>操作</th>
+    </tr>
+  </table>
+  <script src="task_16_zyw.js"></script>
+</body>
+</html>
