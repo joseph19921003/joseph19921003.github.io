@@ -47,8 +47,39 @@ function delectTag(event) {
   	liNode.parentNode.removeChild(liNode);
 };
 
+/*textarea展示*/
 function showLike() {
-// alert(2);
+    var textValue = document.querySelector("textarea").value,
+        textArr = [],
+        m = 0;
+        regchar = /^[\u4E00-\u9FA5\uF900-\uFA2D\da-zA-Z]+$/;
+    for (var k = 0;k <= textValue.length - 1;  k++) {
+    	if (regchar.test(textValue[k])) {
+    		if (!textArr[m]) {
+    			textArr[m] = '';
+    		}
+    		textArr[m] = textArr[m]+textValue[k];
+    	}
+    	else {
+    		if (trimkg(textArr[m])) {
+    			m++;
+    		}
+    	}
+    }
+    textArr = unique(textArr);
+    for (var f = 0;f <= textArr.length - 1;  f++) {
+	    var textareaUlNode = document.querySelector(".textarea-list"),
+	        textareaLiNode = document.createElement("li");
+	    del_ff(textareaUlNode);
+		if(textareaUlNode.childNodes.length ==10) {  //超过十个删除第一个
+			textareaUlNode.removeChild(textareaUlNode.childNodes[0]);
+		}
+	    textareaLiNode.innerHTML = textArr[f];
+	    textareaUlNode.appendChild(textareaLiNode);
+    }
+    setTimeout(function() {
+		textValue = "";
+    },0)
 };
 
 /*给新增的tagli添加删除事件*/
@@ -101,4 +132,19 @@ function del_ff(elem){
 			elem.removeChild(elem_child[i])
 		}
 	}
+}
+
+function trimkg(str) {
+	return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+/*去掉数组中重复的项*/
+function unique(arr) {
+	var tmp = new Array();
+	for(var l in arr) {
+		if (tmp.indexOf(arr[l])==-1) {
+			tmp.push(arr[l]);
+		}
+	}
+	return tmp;
 }
