@@ -12,22 +12,28 @@ var tagsInput = document.getElementById('tagsInput'),
     textArea = document.getElementById('textarea'),
     conBtn = document.getElementById('conBtn'),
     habbies = document.getElementById('habbies'),
-    json = {};
+    json = {},
+    n = 0;
 
 var reg1 = /(\s|\n|\,)$/g;
-tagsInput.onkeydown = function (event){
+tagsInput.onkeyup = function (event){
     var ev = ev || event;
-    var tagsInputValue = tagsInput.value;
-    var lastChar = tagsInputValue.charAt(tagsInputValue.length - 1);
-    if (ev.keyCode == 13 | ev.keyCode == 188 | ev.keyCode == 32 | lastChar == ',' | lastChar == '，') {
-        tagsInputValue = trim(tagsInputValue).replace(/[,，]$/g, '');
+    if (ev.keyCode == 13 | ev.keyCode == 188 | ev.keyCode == 32 ) {
+        var tagsInputValue = trim(tagsInput.value);
+        lastChar = tagsInputValue.charAt(tagsInputValue.length - 1);
+        if (lastChar == ',' | lastChar == ' ' | lastChar == '，') {
+            tagsInputValue = tagsInputValue.substring(0, tagsInputValue.length - 1) ;
+        }
         if (!json[tagsInputValue]) {
-            json[tagsInputValue] = true;
+            n++;
+            json[tagsInputValue] = n;
             tags.innerHTML += '<span>' + tagsInputValue + '</span>';
-
         }
         tagsInput.value = '';
     }
+    console.log(json)
+};
 
 
-}
+
+
