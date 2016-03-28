@@ -13,22 +13,22 @@ var faNode = document.querySelectorAll(".fa"),
 	addHander(chooseNode, "click", choose); //选择节点
 	addHander(delectNode, "click", delect); //删除节点
 	addHander(addNode, "click", add);  //添加节点
-	addHander(searchNode, "click", search);  //添加节点
+	addHander(searchNode, "click", search);  //查找节点
 })();
 
 /*展开与隐藏切换*/
 function toggle(event) {
 	del_ff(event.currentTarget);
-	var chooseUl = event.currentTarget.parentNode.children[2];
+	var chooseUl = event.currentTarget.parentNode.children[3];
 	if(chooseUl) {
 	    var ulStyle = chooseUl.style;
 		if(ulStyle.display == 'block') {
 			ulStyle.display = 'none';
-			event.currentTarget.className = "fa fa-plus-square-o "
+			event.currentTarget.className = "fa fa-plus-square-o ";
 		}
 		else {
 			ulStyle.display = 'block';
-			event.currentTarget.className = "fa fa-minus-square-o "
+			event.currentTarget.className = "fa fa-minus-square-o ";
 		}
 	}
 }
@@ -54,10 +54,15 @@ function choose() {
 //删除节点
 function delect() {
 	var delectArr = hasChooseNode();
-	for (var m = delectArr.length - 1; m >= 0; m--) {
-		del_ff(delectArr[m])
-		var shouldDelect = delectArr[m].parentNode;
-		shouldDelect.parentNode.removeChild(shouldDelect); 
+	if(delectArr.length!=0) {
+		for (var m = delectArr.length - 1; m >= 0; m--) {
+			del_ff(delectArr[m])
+			var shouldDelect = delectArr[m].parentNode;
+			shouldDelect.parentNode.removeChild(shouldDelect); 
+		}
+	}
+	else {
+		alert("请选择需要删除的节点!");
 	}
 }
 
@@ -66,22 +71,27 @@ function add() {
 	var inputValue = document.querySelector(".addinput").value;
 	var addArr = hasChooseNode();
 	if (inputValue) {
-		for (var m = addArr.length - 1; m >= 0; m--) {
-			del_ff(addArr[m]);
-			var shouldAdd = addArr[m].parentNode;
-			if (shouldAdd.children.length != 3) {
-				var shouldAddNode = document.createElement("ul");
-				shouldAddNode.innerHTML = "<li class = 'navli'><i class='fa fa-minus-square-o'></i><input class='checkbox' type = 'checkbox' style = 'display:inline-block'/><span>"+inputValue+"</span></li>";
-				shouldAdd.appendChild(shouldAddNode);
-		        shouldAdd.children[0].className = "fa fa-plus-square-o"
-			}
-			else {
-				var shouldAddNode = document.createElement("li");
-				shouldAddNode.innerHTML = "<i class='fa fa-minus-square-o'></i><input class='checkbox' type = 'checkbox' style = 'display:inline-block'/><span>"+inputValue+"</span>";
-			    shouldAdd.children[3].appendChild(shouldAddNode);
-			}
-		    addNodeEvent(shouldAdd.children[0]);
-		}	
+		if (addArr.length!=0) {
+			for (var m = addArr.length - 1; m >= 0; m--) {
+				del_ff(addArr[m]);
+				var shouldAdd = addArr[m].parentNode;
+				if (shouldAdd.children.length != 4) {
+					var shouldAddNode = document.createElement("ul");
+					shouldAddNode.innerHTML = "<li class = 'navli'><i class='fa fa-minus-square-o'></i><input class='checkbox' type = 'checkbox' style = 'display:inline-block'/><span>"+inputValue+"</span></li>";
+					shouldAdd.appendChild(shouldAddNode);
+			        shouldAdd.children[0].className = "fa fa-plus-square-o"
+				}
+				else {
+					var shouldAddNode = document.createElement("li");
+					shouldAddNode.innerHTML = "<i class='fa fa-minus-square-o'></i><input class='checkbox' type = 'checkbox' style = 'display:inline-block'/><span>"+inputValue+"</span>";
+				    shouldAdd.children[3].appendChild(shouldAddNode);
+				}
+			    addNodeEvent(shouldAdd.children[0]);
+			}	
+		}
+		else {
+			alert("请选择需要添加节点的位置!");
+		}
 	}
 	else {
 		alert("请输入添加的节点名称！");
@@ -108,8 +118,29 @@ function hasChooseNode() {
 
 //查找节点
 function search() {
+	var allNode = document.querySelectorAll("li");
+	for (var j = allNode.length - 1; j >= 0; j--) {
+		allNode[j].children[2].style.backgroundColor = "#fff";
+	}
     var root = document.querySelector(".navul-01");
+    findArr = [];
     var searArr = findNode(root);
+    for (var i = searArr.length - 1; i >= 0; i--) {
+    	searArr[i].children[2].style.backgroundColor = "red";
+    	var searArrParent = searArr[i].parentNode.parentNode;
+    	while (searArrParent != document.querySelector(".wrap")) {
+    		var chooseUl = searArrParent.children[3];
+			if(chooseUl) {
+			    var ulStyle = chooseUl.style;
+				ulStyle.display = 'block';
+				searArrParent.children[0].className = "fa fa-minus-square-o ";
+			}
+    		searArrParent = searArrParent.parentNode.parentNode;
+    	}
+    }
+    if(searArr.length == 0) {
+    	alert("未找到该节点！");
+    }
 }
 
 /*添加事件*/
@@ -132,26 +163,21 @@ function addHander(element, type, handler) {
 	return addHanderE(element, type, handler);
 }
 
-/*查找树  先序遍历*/
+/*查找树  中序遍历*/
+var findArr = [];
 function findNode(node) {
-	var searchValue = document.querySelector(".searchinput");
-	var finArr = [];
+	var searchValue = document.querySelector(".searchinput").value;
 	var current = node;
 	for (var i = 0; i <= node.childElementCount - 1; i++) {
 		var childNode = node.children[i];
+	    if(childNode.children[2].innerHTML == searchValue) {
+			findArr.push(childNode);
+		}
 	    if(childNode.children[3]) {
 	     	current = findNode(childNode.children[3]);
 		}
-		else {
-			if(childNode.children[2].innerHTML == searchValue) {
-				//do something
-				continue;
-			}
-			else {
-				break;
-			}
-		}
 	}
+	return findArr;
 }
 
 /*通过childNodes获取节点时去掉换行所占的节点*/
