@@ -128,7 +128,6 @@ function setCharData() {
       if(new Date(temp_arr[i]).getDay() === 0) {
         var temp_obj = {};
         temp_obj.title = temp_arr[i].slice(0, 7) + "第" + week_num + "个星期";
-        console.log(sum, count)
         temp_obj.percent = sum / count / city_top_aqi;
         chartData.push(temp_obj);
         sum = 0;
@@ -153,7 +152,6 @@ function setCharData() {
       sum += aqiSourceData[nowSelectCity][temp_arr[i]];
       if((i !== 0 && temp_arr[i].slice(0, 7) !== temp_arr[i - 1].slice(0, 7))
           || i === temp_arr.length - 1) {
-        console.log(123)
         var temp_obj = {};
         temp_obj.title = temp_arr[i - 1].slice(0, 7);
         temp_obj.percent = sum / count / city_top_aqi;
@@ -192,7 +190,6 @@ function renderChart() {
       for(var j = 0; j < 6 - backgroundColor.length + 1; j++) {
         backgroundColor = "0" + backgroundColor;
       }
-      console.log(backgroundColor);
 
     }
     div.style.backgroundColor = "#" + backgroundColor;
