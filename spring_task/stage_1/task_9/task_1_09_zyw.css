@@ -186,5 +186,167 @@
 	background-color: #fefefe;
 }
 .right-container {
-	margin: 19px 0 0 59px;
+	/*margin: 19px 0 0 59px;*/
+	margin: 19px 70px 0 59px; /*modified by qi_yiyan*/
 }
+
+/*日期模块和汽车排名模块样式--by qi_yiyan  start*/
+.date_Wrap, .ranking_wrap {
+	border: 1px solid #BEC3C7;
+	border-radius: 10px;
+	background-color: #FFF;
+}
+.date_Wrap {
+	float: left;
+	width: 348px;
+}
+.ranking_wrap {
+	margin-left: 360px;
+}
+.date_Wrap h1, .ranking_wrap h1 {
+	height: 38px;
+	line-height: 38px;
+	border-bottom: 1px solid #E7E8EB;
+	padding: 0 20px;
+	color: #AAAAAA;
+	font-size: 14px;
+	background-color: #F3F5F6;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	font-weight: 500;
+
+}
+.date {
+	padding:0 20px;
+	font-size: 12px;
+	background-color: #FFF;
+	border-radius: 10px;
+	height: 319px;
+}
+.select_wrap {
+	display: flex;
+	justify-content: space-between;
+}
+.date .select_year, .date .select_month, .date .select_day, .today_btn {
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #CDCECE;
+	padding: 0 8px;
+	margin-top: 10px;
+}
+.date .select_year:hover, .date .select_month:hover, .date .select_day:hover, .today_btn:hover {
+	border-color: #A9A9A9;
+}
+.date span .fa {
+	margin-left: 8px;
+}
+.date .select_month {
+	padding-left: 20px;
+}
+.date .select_month i {
+	margin-left: 20px;
+}
+.week {
+	margin-top: 10px;
+	border-top: 2px solid #A9CFEC;
+	border-bottom: 2px solid #E1E2E2;
+	line-height: 30px;
+	display: flex;
+	justify-content: space-around;
+
+}
+.day_wrap {
+
+}
+.day_module {
+	float: left;
+	height: 42px;
+	width: 42px;
+	border: 1px solid #FFF;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 2px;
+}
+.day_module span {
+	display: block;
+}
+.free_day {
+	color: #CD3539;
+}
+.special_day {
+	border-color: #F7D463;
+}
+.ranking_wrap {
+	height: 360px;
+}
+table.rank {
+	border: 1px solid #C3C4C4;
+	border-collapse: collapse;
+	width: 450px;
+	margin: 0 auto;
+	margin-top: 18px;
+	text-align: center;
+	font-size: 12px;
+}
+.rank td,.rank th {
+	border: 1px solid #C3C4C4;
+	border-width: 0 1px 1px 0;
+	vertical-align: middle;
+	height: 25px;
+}
+.rank th {
+	font-weight: 600;
+	font-size: 13px;
+}
+.bg_bar {
+	margin: 0 10px;
+	background-color: #DCDCDC;
+	height: 4px;
+	width: 160px;
+}
+.bg_bar div {
+	height: 100%;
+	background-color: #9ED7F4;
+}
+tr th:nth-child(3), tr td:nth-child(3) {
+	border-right: 0;
+}
+.bg_bar .bar_vw {
+	background-color: #ED6E52;
+	width: 85%;
+}
+.bg_bar .bar_ty {
+	background-color: #EF8150;
+	width: 80%;
+}
+.bg_bar .bar_ad {
+	background-color: #F19E4F;
+	width: 75%;
+}
+.bg_bar .bar_hd {
+	width: 60%;
+}
+.bg_bar .bar_fd {
+	width: 50%;
+}
+.bg_bar .bar_bm {
+	width: 45%;
+}
+.bg_bar .bar_xd {
+	width: 50%;
+}
+.bg_bar .bar_qy {
+	width: 40%;
+}
+.bg_bar .bar_bz {
+	width: 30%;
+}
+.bg_bar .bar_bk {
+	width: 28%;
+}
+tbody tr:hover {
+	background-color: #F4F5F6;
+}
+/*日期模块和汽车排名模块样式--by qi_yiyan  end*/
