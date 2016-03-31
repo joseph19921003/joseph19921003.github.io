@@ -65,6 +65,34 @@
         height: 35px;
         background-color: #fe0100;
         border-top: 10px solid #0002fe;
+        transform:rotate(0deg);
+        -ms-transform:rotate(0deg);   /* IE 9 */
+        -moz-transform:rotate(0deg);  /* Firefox */
+        -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+        -o-transform:rotate(0deg);  /* Opera */
+      }
+      .order-content {
+        margin: 10px 0 0 45px;
+      }
+      .order-input input {
+        width: 200px;
+        height: 28px;
+        line-height: 28px;
+        border: 1px solid #959595;
+        border-radius: 5px;
+        padding-left: 5px;
+      }
+      .order-input a{
+        padding: 2px 5px;
+        border: 1px solid #959595;
+        margin: 0 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      p{
+        color: #555;
+        font-size: 14px;
+        line-height: 28px;
       }
     </style>
   </head>
@@ -92,6 +120,13 @@
         </ul>
         <div class="diamonds"></div>
       </div>
+    </div>
+    <div class="order-content">
+      <div class="order-input"><input class ="input-text" type="text" value="GO" /><a class="execute">执行</a></div>
+      <p>GO：向蓝色边所面向的方向前进一格</p>
+      <p>TUN LEF：向左转（逆时针旋转90度）</p>
+      <p>TUN RIG：向右转（顺时针旋转90度）</p>
+      <p>TUN BAC：向右转（旋转180度）</p>
     </div>
   </div>
   <script src="task_33_zyw.js"></script>
