@@ -1,0 +1,146 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 34</title>
+    <style type="text/css">
+      *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+      }
+      .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .clearfix {
+        overflow: hidden; 
+        zoom: 1;
+      }
+      .chessboard {
+        position: relative;
+      }
+      .top-number {
+        width: 450px;
+        height: 45px;
+        line-height: 45px;
+        margin-left: 45px;
+      }
+      .top-number li {
+        float: left;
+        width: 45px;
+        text-align: center;
+      }
+      .left-number {
+        float: left;
+        width: 45px;
+        line-height: 45px;
+        text-align: center;
+      }
+      .border-content{
+        margin-left: 45px;
+        border: 1px solid #111;
+      }
+      .border-content,.border-block {
+        position: relative;
+        width: 450px;
+        height: 450px;
+        font-size: 14px;
+      }
+      .border-block li {
+        float: left;
+        width: 43px;
+        height: 43px;
+        border: 1px solid #e4e4e4;
+      }
+      .diamonds {
+        position: absolute;
+        left: 45px;
+        top: 45px;
+        width: 45px;
+        height: 35px;
+        background-color: #fe0100;
+        border-top: 10px solid #0002fe;
+        transform:rotate(0deg);
+        -ms-transform:rotate(0deg);   /* IE 9 */
+        -moz-transform:rotate(0deg);  /* Firefox */
+        -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+        -o-transform:rotate(0deg);  /* Opera */
+        transition: top 1.5s, left 1.5s, transform 0.5s;
+        -moz-transition: top 1.5s, left 1.5s, -moz-transform 0.5s;
+        -webkit-transition: top 1.5s, left 1.5s , -webkit-transform 0.5s;
+        -o-transition: top 1.5s, left 1.5s,-o-transform 0.5s;
+      }
+      .order-content {
+        margin: 10px 0 0 45px;
+      }
+      .order-input input {
+        width: 200px;
+        height: 28px;
+        line-height: 28px;
+        border: 1px solid #959595;
+        border-radius: 5px;
+        padding-left: 5px;
+      }
+      .order-input a{
+        padding: 2px 5px;
+        border: 1px solid #959595;
+        margin: 0 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      p{
+        color: #555;
+        font-size: 14px;
+        line-height: 25px;
+      }
+    </style>
+  </head>
+<body>
+  <div id="wrap">
+    <div class="chessboard clearfix">
+      <ul class="top-number clearfix">
+        <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li>
+      </ul>
+      <ul class="left-number">
+        <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li>
+      </ul>
+      <div class="border-content">
+        <ul class = "border-block">
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        </ul>
+        <div class="diamonds"></div>
+      </div>
+    </div>
+    <div class="order-content">
+      <div class="order-input"><input class ="input-text" type="text" value="GO" /><a class="execute">执行</a></div>
+      <p>GO：向蓝色边所面向的方向前进一格</p>
+      <p>TUN LEF：向左转（逆时针旋转90度）</p>
+      <p>TUN RIG：向右转（顺时针旋转90度）</p>
+      <p>TUN BAC：向右转（旋转180度）</p>
+      <p>TRA LEF：向屏幕的左侧移动一格，方向不变</p>
+      <p>TRA TOP：向屏幕的上面移动一格，方向不变</p>
+      <p>TRA RIG：向屏幕的右侧移动一格，方向不变</p>
+      <p>TRA BOT：向屏幕的下面移动一格，方向不变</p>
+      <p>MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格</p>
+      <p>MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格</p>
+      <p>MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格</p>
+      <p>MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格</p>
+    </div>
+  </div>
+  <script src="task_34_zyw.js"></script>
+</body>
+</html>
