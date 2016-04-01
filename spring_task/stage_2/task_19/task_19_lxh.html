@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_19</title>
+    <style>
+        html, body, div, input, button {
+            margin: 0;
+            padding: 0;
+        }
+        .warp {
+            padding: 20px;
+            width: 640px;
+        }
+        #box {
+            width: 900px;
+            height: 100px;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: flex-end;
+        }
+        .ele {
+            width: 12px;
+            background: #f00;
+            display: inline-block;
+            margin: 1px;
+            color: #fff;
+            font-size: 10px;
+            text-align: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <input type="text" placeholder="请输入数字，选择插入方向">
+    <button>左侧入</button>
+    <button>右侧入</button>&nbsp
+    <button>左侧出</button>
+    <button>右侧出</button>
+    <br/><br/>
+    <input type="text" placeholder="请输入<=60的随机生成个数">
+    <button>随机生成</button>&nbsp
+    <button>冒泡排序</button>
+    <button>选择排序</button>
+    <div id="box"></div>
+</div>
+
+<script src="task_19_lxh.js"></script>
+</body>
+</html>
