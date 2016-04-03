@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_25</title>
+    <style>
+        html, body, div, ul, li, input, span {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin: 20px;
+            width: 300px;
+        }
+        input {
+            margin: 10px;
+        }
+        #oUl li ul {
+            display: none;
+        }
+        #oUl li h3 span {
+            padding: 0 10px;
+        }
+        li {
+            list-style: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            cursor: default;
+        }
+        #oUl>li>ul>li>h3 {
+            margin-left: 20px;
+        }
+        #oUl>li>ul>li>ul>li>h3 {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <input type="text" placeholder="删除节点"><button>删除节点</button>
+        <br>
+        <input type="text" placeholder="添加节点"><button>添加节点</button>
+        <br>
+        <input type="text" placeholder="查找节点的名称"><button>查找节点</button>
+        <br>
+        <div>
+            <ul id="oUl">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="task_25_lxh.js"></script>
+</body>
+</html>
