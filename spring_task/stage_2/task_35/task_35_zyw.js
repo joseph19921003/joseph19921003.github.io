@@ -9,21 +9,37 @@ var pos = {
 	var btnNode = document.querySelector(".execute");
 	var textareaNode = document.querySelector(".input-text")
 	addHander(btnNode, "click", play);
-	addHander(textareaNode, "keydown", addNum);//左边编号同步
+	addHander(textareaNode, "keydown", addNum);//左边编号数量同步
+	addHander(textareaNode, "scroll", syncNum);//左边编号同步滚动
 })();
 
-//左边编号同步
-function addNum(event){
+//左边编号数量同步
+function addNum(event) {
 	var e = e||event;
-	var length = document.querySelectorAll(".ul-num li").length+1;
+	var length = document.querySelectorAll(".ul-num li").length+1,
+	    contentLength = document.querySelector(".input-text").length;
     if (e.keyCode == 13) {
 		var liNumNode = document.createElement("li");
 		liNumNode.innerHTML = length;
 		ulNumNode.appendChild(liNumNode);
-		if (length>7) {
-			ulNumNode.style.marginTop = -(length-7)*20+'px';
-		}
     }
+}
+
+//左边编号同步滚动
+function syncNum(event) {
+	var e= e||event;
+	var scrollTop = e.target.scrollTop,
+	    scrollHeight = e.target.scrollHeight,
+	    liNumNode = document.querySelectorAll(".ul-num li");
+	ulNumNode.style.marginTop = -scrollTop+'px';
+	for (var i = liNumNode.length - 1; i >= 0; i--) {
+		if (i<scrollHeight/20) {
+			continue;
+		}
+		else {
+			ulNumNode.removeChild(liNumNode[i]);
+		}
+	}
 }
 
 //小方块运动判断
