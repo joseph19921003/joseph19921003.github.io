@@ -14,19 +14,19 @@ var moveBlock = document.getElementsByClassName('moveBlock')[0],
     command = document.getElementsByTagName('input')[0];
 
 //绑定事件函数
-function addEvent( obj, ev, fn ) {
-    if (obj.attachEvent) {
-        obj.attachEvent( 'on' + ev, fn );
+function bind( obj, ev, fn ) {
+    if (obj.addEventListener) {
+        obj.addEventListener( ev, fn, false );
     }
     else {
-        obj.addEventListener( ev, fn, false );
+        obj.attachEvent( 'on' + ev, fn );
     }
 }
 
 //初始化，将运动块旋转角度设置为0度
 moveBlock.style.transform = 'rotate(0deg)';
 
-addEvent( btn, 'click', move );
+bind( btn, 'click', move );
 
 //运动块的旋转方向及运动方向判断
 function move() {
@@ -40,13 +40,13 @@ function move() {
                 state.y--;
             }
             else if ( Math.abs(dir % 4) == 1 && state.x > 0) {
-                state.x++;
+                state.x--;
             }
             else if ( Math.abs(dir % 4) ==2 && state.y < 9) {
                 state.y++;
             }
             else if ( Math.abs(dir % 4) ==3 && state.x < 9 ) {
-                state.x--;
+                state.x++;
             }
             break;
         }

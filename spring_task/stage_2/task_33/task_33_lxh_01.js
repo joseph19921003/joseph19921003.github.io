@@ -47,7 +47,6 @@ function move() {
                 alert('已经到头了，请改变方向后重试！');
                 return;
             }
-            moveBlock.offsetTop = moveBlock.offsetTop - 46 + 'px';
             moveBlock.style.top = moveBlock.offsetTop - 46 + 'px';
         }
         else if ( currentDeg % 360 == 90 ) {
@@ -55,7 +54,6 @@ function move() {
                 alert('已经到头了，请改变方向后重试！');
                 return;
             }
-            moveBlock.offsetLeft = moveBlock.offsetLeft + 44 + 'px';
             moveBlock.style.left = moveBlock.offsetLeft + 44 + 'px';
         }
         else if ( currentDeg % 360 == 180 ) {
@@ -63,7 +61,6 @@ function move() {
                 alert('已经到头了，请改变方向后重试！');
                 return;
             }
-            moveBlock.offsetTop = moveBlock.offsetTop + 44 + 'px';
             moveBlock.style.top = moveBlock.offsetTop + 44 + 'px';
         }
         else if ( currentDeg % 360 == 270 ) {
@@ -71,7 +68,6 @@ function move() {
                 alert('已经到头了，请改变方向后重试！');
                 return;
             }
-            moveBlock.offsetLeft = moveBlock.offsetLeft - 46 + 'px';
             moveBlock.style.left = moveBlock.offsetLeft - 46 + 'px';
         }
 
