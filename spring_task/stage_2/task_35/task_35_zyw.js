@@ -4,6 +4,7 @@ var pos = {
 	y:1,
 	dir:0
 }; //小方块状态参数
+var funQueue = {};//动画队列
 
 (function() {
 	var btnNode = document.querySelector(".execute");
@@ -16,12 +17,24 @@ var pos = {
 //左边编号数量同步
 function addNum(event) {
 	var e = e||event;
-	var length = document.querySelectorAll(".ul-num li").length+1,
-	    contentLength = document.querySelector(".input-text").length;
+	var liNumNode = document.querySelectorAll(".ul-num li");
+	var textArr = getValue();
+	var contentLength = textArr.length;
     if (e.keyCode == 13) {
-		var liNumNode = document.createElement("li");
-		liNumNode.innerHTML = length;
-		ulNumNode.appendChild(liNumNode);
+	    var addliNumNode = document.createElement("li");
+	    addliNumNode.innerHTML = liNumNode.length+1;
+		ulNumNode.appendChild(addliNumNode);
+		command();
+    }
+    if (e.keyCode == 8 && contentLength<liNumNode.length+1) {
+    	for (var i = liNumNode.length - 1; i >= 0; i--) {
+			if (i<contentLength) {
+				continue;
+			}
+			else {
+				ulNumNode.removeChild(liNumNode[i]);
+			}
+		}
     }
 }
 
@@ -29,97 +42,185 @@ function addNum(event) {
 function syncNum(event) {
 	var e= e||event;
 	var scrollTop = e.target.scrollTop,
-	    scrollHeight = e.target.scrollHeight,
-	    liNumNode = document.querySelectorAll(".ul-num li");
+	    scrollHeight = e.target.scrollHeight;
 	ulNumNode.style.marginTop = -scrollTop+'px';
-	for (var i = liNumNode.length - 1; i >= 0; i--) {
-		if (i<scrollHeight/20) {
-			continue;
+}
+
+//获取textarea命令
+function getValue() {
+	var contentNode = document.querySelector(".input-text");
+	var textArr = contentNode.value.split('\n');
+	return textArr;
+}
+
+function checkNum(data) {
+	 return /^[1-9]+[0-9]*]*$/.test(data);
+}
+
+//获取对象属性个数
+function countO(o) {
+	var t = typeof o;
+	if (t == 'string') {
+		return o.length;
+	}
+	else if (t=='object') {
+		var n = 0;
+		for(var i in o) {
+			n++;
+		}
+		return n;
+	}
+	return false;
+}
+
+//执行动画
+function play() {
+	var count = countO(funQueue);
+	for (var i = count - 1; i >= 0; i--) {
+		var m = i+1;
+		eval(funQueue[m].fun+"("+funQueue[m].num+")");
+		animate();
+	}
+}
+
+//小方块运动命令的判断
+//将每条命令执行的函数放进函数队列中
+function command() {
+	var liNumNode = document.querySelectorAll(".ul-num li");
+	var textareaArr = getValue();
+	var lengthT = textareaArr.length;
+	var keyWord = ['go', 'GO', 'tun lef', 'TUN LEF', 'tun rig', 'TUN RIG', 'tun bac', 'TUN BAC', 'tra lef', 'TRA LEF', 'tra top', 'TRA TOP', 'tra rig', 'TRA RIG', 'tra bot', 'TRA BOT', 'mov lef', 'MOV LEF', 'mov top', 'MOV TOP', 'mov rig', 'MOV RIG', 'mov bot', 'MOV BOT']; //命令类型
+	var funName = ['go', 'tunLef', 'tunRig', 'tunBac', 'traLef', 'traTop', 'traRig', 'traBot', 'movLef', 'movTop', 'movRig', 'movBot']; //命令对应函数名称
+	var orderNum = 1;
+	funQueue = {};
+	while(lengthT--) {
+		var rowValue = trim(textareaArr[lengthT]);
+		var hasKey = false; //是否找到命令标志
+		for (var i = 0; i <= keyWord.length - 1; i++) {
+			var rowValueArr = rowValue.split(' ');
+			var j = parseInt(i/2);
+			if (i<2) {
+				if(rowValueArr.length ==1) {
+					if(rowValueArr[0] == keyWord[i]) {
+				        funQueue[orderNum] = {fun:funName[0],num:1};
+				        hasKey = true;
+				        orderNum++;
+					}
+				}
+				else if(rowValueArr[0] == keyWord[i] && checkNum(trim(rowValueArr[1]))) {
+					funQueue[orderNum] = {fun:funName[0], num:trim(rowValueArr[1])};
+					hasKey = true;
+					orderNum++;
+				}
+			}
+			else if(i<8) {
+				if (rowValue==keyWord[i]) {
+					funQueue[orderNum] = {fun:funName[j], num:null};
+					hasKey = true;
+					orderNum++;
+				}
+			}
+			else {
+				var keyWordArr = keyWord[i].split(' ');
+				if (rowValueArr.length ==2) {
+					if (rowValue==keyWord[i]) {
+						funQueue[orderNum] = {fun:funName[j], num:1};
+						hasKey = true;
+						orderNum++;
+					}
+				}
+				else if (rowValueArr[0]==keyWordArr[0]&&rowValueArr[1]==keyWordArr[1]&&checkNum(trim(rowValueArr[2]))) {
+					funQueue[orderNum] = {fun:funName[j], num:trim(rowValueArr[2])};
+					hasKey = true;
+					orderNum++;
+				}
+			}
+		}
+		if (!hasKey) {
+			liNumNode[lengthT].style.borderRadius = '10px';
+			liNumNode[lengthT].style.backgroundColor = 'red';
 		}
 		else {
-			ulNumNode.removeChild(liNumNode[i]);
+			liNumNode[lengthT].style.borderRadius = '0px';
+			liNumNode[lengthT].style.backgroundColor = '#ccc';
 		}
+		// switch (rowValue) {
+		// 	case 'go':
+		// 	case 'GO': {
+		// 		go(1);
+		// 		break;
+		// 	}
+		// 	case 'tun lef':
+		// 	case 'TUN LEF': {
+		// 	tunLef();
+		// 	break;
+		// 	}
+		// 	case 'tun rig':
+		// 	case 'TUN RIG': {
+		// 	tunRig();
+		// 	break;
+		// 	}
+		// 	case 'tun bac':
+		// 	case 'TUN BAC': {
+		// 	tunBac();
+		// 	break;
+		// 	}
+		// 	case 'tra lef':
+		// 	case 'TRA LEF': {
+		// 	traLef(1);
+		// 	break;
+		// 	}
+		// 	case 'tra top':
+		// 	case 'TRA TOP': {
+		// 	traTop(1);
+		// 	break;
+		// 	}
+		// 	case 'tra rig':
+		// 	case 'TRA RIG': {
+		// 	traRig(1);
+		// 	break;
+		// 	}
+		// 	case 'tra bot':
+		// 	case 'TRA BOT': {
+		// 	traBot(1);
+		// 	break;
+		// 	}
+		// 	case 'mov lef':
+		// 	case 'MOV LEF': {
+		// 	movLef(1);
+		// 	break;
+		// 	}
+		// 	case 'mov top':
+		// 	case 'MOV TOP': {
+		// 	movTop(1);
+		// 	break;
+		// 	}
+		// 	case 'mov rig':
+		// 	case 'MOV RIG': {
+		// 	movRig(1);
+		// 	break;
+		// 	}
+		// 	case 'mov bot':
+		// 	case 'MOV BOT': {
+		// 	movBot(1);
+		// 	break;
+		// 	}
+
+		// }
+		// animate();
+		// funQueue.lengthT
 	}
 }
 
-//小方块运动判断
-function play() {
-	var inputValue = document.querySelector(".input-text").value;
-	switch (trim(inputValue)) {
-		case 'go':
-		case 'GO': {
-			go(1);
-			break;
-		}
-		case 'tun lef':
-		case 'TUN LEF': {
-			tunLef();
-			break;
-		}
-		case 'tun rig':
-		case 'TUN RIG': {
-			tunRig();
-			break;
-		}
-		case 'tun bac':
-		case 'TUN BAC': {
-			tunBac();
-			break;
-		}
-		case 'tra lef':
-		case 'TRA LEF': {
-			traLef(1);
-			break;
-		}
-		case 'tra top':
-		case 'TRA TOP': {
-			traTop(1);
-			break;
-		}
-		case 'tra rig':
-		case 'TRA RIG': {
-			traRig(1);
-			break;
-		}
-		case 'tra bot':
-		case 'TRA BOT': {
-			traBot(1);
-			break;
-		}
-		case 'mov lef':
-		case 'MOV LEF': {
-			movLef(1);
-			break;
-		}
-		case 'mov top':
-		case 'MOV TOP': {
-			movTop(1);
-			break;
-		}
-		case 'mov rig':
-		case 'MOV RIG': {
-			movRig(1);
-			break;
-		}
-		case 'mov bot':
-		case 'MOV BOT': {
-			movBot(1);
-			break;
-		}
-
-	}
-	animate();
-}
-
-function tunLef() {
+function tunLef(n) {
 	pos.dir--;
 }
 
-function tunRig() {
+function tunRig(n) {
 	pos.dir++;
 }
 
-function tunBac() {
+function tunBac(n) {
 	pos.dir+=2;
 }
 
