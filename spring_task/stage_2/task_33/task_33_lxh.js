@@ -39,14 +39,14 @@ function move() {
             if ( Math.abs(dir % 4) == 0 && state.y > 0 ) {
                 state.y--;
             }
-            else if ( Math.abs(dir % 4) == 1 && state.x > 0) {
-                state.x--;
+            else if ( Math.abs(dir % 4) == 1 && state.x < 9) {
+                state.x++;
             }
             else if ( Math.abs(dir % 4) ==2 && state.y < 9) {
                 state.y++;
             }
-            else if ( Math.abs(dir % 4) ==3 && state.x < 9 ) {
-                state.x++;
+            else if ( Math.abs(dir % 4) ==3 && state.x > 0 ) {
+                state.x--;
             }
             break;
         }
