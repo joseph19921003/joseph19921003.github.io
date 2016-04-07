@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task_33</title>
+    <style>
+        html, body, div, ul, li, button, a, input {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .top {
+            width: 495px;
+            height: 495px;
+        }
+        .horizontal {
+            word-spacing: -8px;
+            margin-left: 45px;
+        }
+        .vertical {
+            width: 45px;
+        }
+        .horizontal li {
+            display: inline-block;
+        }
+        .horizontal li, .vertical li {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+        }
+        .bottom {
+            margin-left: 45px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        button {
+            border-radius: 3px;
+            background: #fff;
+            width: 45px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .box {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #000;
+            position: absolute;
+            top: 45px;
+            left: 45px;
+            font-size: 0;
+        }
+        .box a {
+            width: 43px;
+            height: 43px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        .moveBlock {
+            width: 43px;
+            height: 33px;
+            margin: 1px;
+            position: absolute;
+            z-index:999;
+            background: #f00;
+            top: 45px;
+            left: 45px;
+            border-top: 10px solid #00f;
+        }
+        .description {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    <ul class="horizontal">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul class="vertical">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <div class="box"><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><div class="moveBlock"></div></div>
+</div>
+<div class="bottom">
+        <input type="text" autofocus placeholder="输入下面命令"> <button>执行</button>
+        <ul class="description">
+            <li>GO:向蓝色边所面向的方向前进一格（一格等同于正方形的连长）</li>
+            <li>TUN LEF:向左转（逆时针旋转90度）</li>
+            <li>TUN RIG:向右转（顺时针旋转90度）</li>
+            <li>TUN BAG:向右转（旋转180度）</li>
+        </ul>
+    </div>
+<script src="task_33_lxh.js"></script>
+</body>
+</html>
