@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>h5小游戏（1）</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="../common-file/jquery.js"></script>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		overflow: hidden;
+	}
+	.canvas-content {
+		width: 32rem;
+		height: 100%;
+	}
+	#canvas {
+		margin: 0 auto;
+		background-color: #ffe6cd;
+	}
+</style>
+<body>
+    <script type="text/javascript">
+		var _winWidth=document.body.clientWidth || document.documentElement.clientWidth,_style=document.getElementsByTagName("html")[0].style;
+		    _winWidth >= 640 ? _style.fontSize = "20px" : _style.fontSize = _winWidth/32 + "px";
+		var _height = document.body.clientHeight|| document.documentElement.clientHeight;
+	    document.getElementsByTagName("body")[0].style.height = _height+'px';
+	</script>
+    <div class="canvas-content"><canvas id = "canvas"></canvas></div>
+    <script type="text/javascript" src="task_46_zyw.js"></script>
+</body>
+</html>
