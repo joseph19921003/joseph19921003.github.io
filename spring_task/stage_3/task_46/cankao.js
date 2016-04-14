@@ -117,8 +117,8 @@ function pathFind(x, y, x2, y2) {
 			
 			var idx = open.indexOf(next);
 			if(idx < 0) {
-			    isBetter = true;
-				nodesSearched++;
+			 isBetter = true;
+				// //nodesSearched++;
 			}
 			else if(temp_g_score < g_score[next.coord]) {
 			    open.splice(idx, 1); // remove old node
@@ -131,13 +131,14 @@ function pathFind(x, y, x2, y2) {
 				f_score[next.coord] = g_score[next.coord] + h(next, goal);
 				
 				// add the new node or reinsert the old node
+				// console.log(open);
 				if(badSorting) open.insertSorted2(next, sortFn);
                 else open.insertSorted(next, sortFn);
 										    
 				// drawing
-				var s = Math.floor(g_score[next.coord]*4);
-				ctx.fillStyle = 'rgb('+(255-s)+',255,'+s+')';
-				ctx.fillRect(next.x*10, next.y*10, 10, 10);
+				// var s = Math.floor(g_score[next.coord]*4);
+				// ctx.fillStyle = 'rgb('+(255-s)+',255,'+s+')';
+				// ctx.fillRect(next.x*10, next.y*10, 10, 10);
 			}
 		}
 	}

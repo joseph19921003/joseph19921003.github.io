@@ -190,10 +190,10 @@ function draw() {
 <body onload="init()" style="font-family:'Lucida Grande', Verdana, Arial, Sans-Serif;font-size:12px">
 <canvas id="canvas" style="float:left;margin-right:10px" width=200 height=200></canvas>
 <div>
-	<input id="diagonals" type="checkbox" onclick="draw()">Allow diagonals<br>
-	<input id="diagonalcost" type="checkbox" onclick="draw()">Tweak diagonal cost<br>
+	<input id="diagonals" type="checkbox" onclick="draw()" checked="yes">Allow diagonals<br>
+	<input id="diagonalcost" type="checkbox" onclick="draw()" checked="yes">Tweak diagonal cost<br>
 	<input id="badSorting" type="checkbox" onclick="draw()" checked="yes">Prefer new nodes<br>
-	<input id="dotTiebreaker" type="checkbox" onclick="draw()">Dot product tie breaker<br><br>
+	<input id="dotTiebreaker" type="checkbox" onclick="draw()"  checked="yes">Dot product tie breaker<br><br>
 	<input type="button" onclick="clearMap()" value="Clear"><input type="button" onclick="randomMap()" value="Random"><br><br>
 	<table style="font-family:'Lucida Grande', Verdana, Arial, Sans-Serif;font-size:12px"><tr><td>
 	Path length:</td><td><span id="pathlength"></span></td></tr>
