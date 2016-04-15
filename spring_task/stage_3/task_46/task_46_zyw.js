@@ -1,4 +1,5 @@
 var map,gold;
+var dig = true;  //是否允许都对角线
 var start = {x:4, y:0},
     end = {x:4, y:0};
 var path = [];
@@ -43,7 +44,8 @@ function Node(x, y, type) {
 	this.neighbours = function(end) {
 		var neib = [];
 		var dir = [[0,1], [0,-1], [1,0], [-1,0], [1,-1], [1,1], [-1,-1], [-1,1]];
-		for (var i = 0; i < 8; i++) {
+		var num = dig?8:4;
+		for (var i = 0; i < num; i++) {
 			if (((this.x+dir[i][0]>=0) && (this.x+dir[i][0]<colNum)) && ((this.y+dir[i][1]>=0) && (this.y+dir[i][1]<heightLength))) {
 				var  p = map[this.x+dir[i][0]][this.y+dir[i][1]];
 				if (!p.type) {
@@ -65,7 +67,7 @@ function initMap() {
 				map[i][j] = new Node(i, j, false);
 			}
 			else {
-				var t = Math.random()>0.8;
+				var t = Math.random()>0.7;
 				map[i][j] = new Node(i, j, t);
 			}
 		}
@@ -79,10 +81,31 @@ function personDraw(x, y) {
 	ctx.drawImage(personImage, x, y, colWidth, colWidth);
 }
 
-//绘制界面图
-var personImage;
-function draw() {
+//加载文件图片
+function fileDraw(x, y) {
+	ctx.drawImage(fileImage, x, y, colWidth, colWidth);
+}
 
+//移动小人时清除之前小人
+function clearperson(x, y) {
+    ctx.fillStyle="#ffe6cd";
+    ctx.fillRect(x,y,colWidth,colWidth);
+    if (x == gold.x*colWidth &&y == gold.y*colWidth) {
+    	fileDraw(x, y);
+    }
+}
+
+//新的一局开始，重绘界面
+function reset() {
+    start = {x:4, y:0},
+    end = {x:4, y:0};
+    initMap();
+}
+
+//绘制界面图
+var personImage,fileImage;
+function draw() {
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     personImage = new Image();
 	personImage.onload = function() {
 		personDraw(colWidth*4, 0);
@@ -90,9 +113,9 @@ function draw() {
 	personImage.src = "../../../images/person.png";
 
 	//加载file图片
-	var fileImage = new Image();
+	fileImage = new Image();
 	fileImage.onload = function() {
-		ctx.drawImage(fileImage, colWidth*4, (heightLength-1)*colWidth , colWidth, colWidth);
+		fileDraw(colWidth*4, (heightLength-1)*colWidth);
 	};
 	fileImage.src = "../../../images/box.png";
 
@@ -113,35 +136,34 @@ function draw() {
 function clickEvent(event) {
 	var e = e||event;
 	var pos = {x:parseInt(e.clientX/colWidth), y:parseInt(e.clientY/colWidth)};
-	if (!map[pos.x][pos.y].type) {
-		start.x = end.x;
-		start.y = end.y;
-		end.x = pos.x;
-		end.y = pos.y;
+	if (pos.y!= heightLength) {
+		if (!map[pos.x][pos.y].type) {
+			start.x = end.x;
+			start.y = end.y;
+			end.x = pos.x;
+			end.y = pos.y;
+			pathFind(start.x, start.y, end.x, end.y);
+			m = path.length-1;
+			main();
+		}
 	}
-	else {
-		start.x = end.x;
-		start.y = end.y;
-	}
-	pathFind(start.x, start.y, end.x, end.y);
-	m = 0;
-	main();
-	// var m = 0;
-	// var timer = setInterval(function () {
-	// 	m++;
-	// 	personDraw((path[m].x+1)*colWidth, (path[m].y+1)*colWidth);
-	// 	if (m<=path.length) {
-	// 		clearTimeout(timer);
-	// 		// initMap();
-	// 	}
-	// }, 1)
 }
 
-var m = 0;
+//小人移动动画开始
+var m = path.length-1;
 var main = function () {
-	personDraw((path[m].x)*colWidth, (path[m].y)*colWidth);
-	m++
-	if (m<path.length) {
+	personDraw((path[m].x)*colWidth, (path[m].y)*colWidth);	
+	if (m==path.length-1) {
+		clearperson((start.x)*colWidth, (start.y)*colWidth);
+	}
+	else {
+	    clearperson((path[m+1].x)*colWidth, (path[m+1].y)*colWidth)	;	
+	}
+	m--;
+    if (gold.x == path[m+1].x &&gold.y == path[m+1].y) {
+    	reset();
+    }
+	else if (m>=0) {
 	    requestAnimationFrame(main);
 	}
 };
@@ -154,9 +176,12 @@ function heuristics(a, b) {
 	var dx2 = start.x - b.x
 	var dy2 = start.y - b.y
 	var cross = Math.abs(dx1*dy2 - dx2*dy1);
-	var straight = Math.abs(Math.abs(dx1) - Math.abs(dy1));
-	var diagonal = Math.max(Math.abs(a.x-b.x), Math.abs(a.y-b.y)) - straight;
-	return straight + 1.01*diagonal + cross*0.001;
+	if(dig) {//允许走对角线
+		var straight = Math.abs(Math.abs(dx1) - Math.abs(dy1));
+	    var diagonal = Math.max(Math.abs(a.x-b.x), Math.abs(a.y-b.y)) - straight;
+	    return straight + 1.01*diagonal + cross*0.001;
+	}
+	return Math.abs(dx1)+Math.abs(dy1) + cross*0.001;
 }
 
 //寻找路径
